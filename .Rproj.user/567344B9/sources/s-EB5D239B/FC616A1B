@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1539762263439.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1566729134",
+    "id" : "FC616A1B",
+    "lastKnownWriteTime" : 1539766432,
+    "last_content_update" : 1539766432589,
+    "path" : "C:/Users/meihan/Desktop/inClassPractice/inClassPractice/2018-10-17.Rmd",
+    "project_path" : "2018-10-17.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "27,3",
+        "scrollLine" : "14"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
