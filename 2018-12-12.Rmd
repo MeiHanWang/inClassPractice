@@ -1,0 +1,142 @@
+---
+title: "2018-12-12"
+output: html_notebook
+---
+```{r}
+library(readr)
+libraryData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/library100_102.csv")
+library(dplyr)
+library(stringr)
+```
+
+```{r}
+libraryData$"書籍館藏地" <- as.factor(libraryData$"書籍館藏地")
+levels(libraryData$"書籍館藏地") -> storageLocations
+
+###libraryData$"書籍館藏地" %>% as.factor() %>% levels() -> storageLocations
+storageLocations
+```
+
+```{r}
+i<-1
+# 1
+storageLocation_i <- storageLocations[i] 
+# 2
+numericalIndexForSubsample<-which(libraryData$書籍館藏地==storageLocation_i)
+subsample_i <- libraryData[numericalIndexForSubsample,]
+# 3
+borrowCount_i <- nrow(subsample_i)
+```
+
+```{r}
+# 0
+allBorrowCount <- vector("numeric",18)
+```
+
+```{r}
+for (i in c(1:18)) {
+  
+}
+  # 1
+  storageLocation_i <- storageLocations[i] 
+  # 2
+  numericalIndexForSubsample<-which(libraryData$書籍館藏地==storageLocation_i)
+  subsample_i <- libraryData[numericalIndexForSubsample,]
+  # 3
+  borrowCount_i <- nrow(subsample_i)
+  # 4
+  allBorrowCount[[i]]<-borrowCount_i
+```
+
+```{r}
+libraryData$"學院" %>% as.factor %>% levels -> college
+
+#0 
+collegeBorrowCount <- vector("numeric",length(college))
+for(i in c(1:length(college))){
+#1
+college_i <- college[i]
+#2
+numericalIndexForSubsample<-which(libraryData$學院 == college_i)
+collegesubsample_i <- libraryData[numericalIndexForSubsample,]
+#3
+collegeBorrowCount_i <- nrow(collegesubsample_i)
+#4
+collegeBorrowCount[[i]]<-collegeBorrowCount_i 
+
+}
+
+```
+
+```{r}
+ans<-0
+for (i in 1:10) {
+  newlyAdded<-i
+  ans<-ans+newlyAdded
+}
+```
+
+```{r}
+libraryData %>%
+  group_by(書籍館藏地) %>%
+  summarise(
+    borrowCount=length(學號)
+  ) -> result
+result
+```
+
+```{r}
+libraryData %>%
+  mutate(
+    學系=str_sub(學號,5,6)
+    ##相當於 librarData$學系<-str_sub(libraryData$學系 <- str_sub(libraryData$學號,5,6))
+  )
+```
+
+```{r}
+libraryData %>%
+  group_by(學院,入學年) %>%
+  summarise(
+    borrowCount=length(學號)
+  ) %>%
+  ungroup-> result2
+result2
+```
+
+
+#0 container
+
+for(i in seq_along(College)){
+  for(j in seq_along(EntranceYear)){
+    #1
+    
+    #2
+    
+    #3
+    
+    #4
+    
+    
+  }
+
+```{r}
+libraryData %>%
+  filter(入學年==102)
+
+```
+
+## 第一次進圖書館
+
+```{r}
+libraryData %>%
+  mutate(
+      借閱時間=ymd_hms(借閱時間,tz="Asia/Taipei")
+  ) %>%
+  group_by(學號) %>%
+  summarise(
+    第一次借書=min(借閱時間)
+  ) %>%
+  ungroup -> result3
+result3
+```
+
