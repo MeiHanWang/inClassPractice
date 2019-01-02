@@ -100,6 +100,16 @@ totalCredits("edfeQ7fb8")
 ```
 
 
+##算每個學生學分數
+
+```{r}
+transcriptData$學號 %>% unique -> allStudentID
+i<-1
+studentID_i<-allStudentID[i]
+studentID_i %>% totalCredits 
+```
+
+
 ## 1.5 取出系別代號
 
 學號的第5-6碼為此學生系別, 請在transcriptData新增**系別**欄位。
